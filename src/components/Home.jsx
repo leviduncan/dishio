@@ -1,10 +1,13 @@
 import FeaturedRecipes from './FeaturedRecipes'
+import Hero from './Hero'
+import Navbar from './Navbar'
 
 const Home = () => {
     
     return (
         <>
-        <Home />
+        <Navbar />
+        <Hero />
        <FeaturedRecipes />
         </>
     )
