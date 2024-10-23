@@ -1,48 +1,43 @@
-import { useState, useEffect } from 'react';
-import heroes from '../bgdata';
+import React, { useContext, useState, useEffect } from 'react';
+import { RecipeContext } from '../context/recipeContext';
 
-const chooseRandomHero = () => {
-  const heroNames = heroes.map((hero) => hero.name);
-  const randomIndex = Math.floor(Math.random() * heroNames.length);
-  return heroNames[randomIndex];
+const chooseRandomRecipe = (recipes) => {
+  const randomIndex = Math.floor(Math.random() * recipes.length);
+  return recipes[randomIndex];
 };
 
 const Hero = () => {
-  const [hero, setHero] = useState(null);
+  const { searchQuery, handleSearch, recipes } = useContext(RecipeContext);
+  const [randomRecipe, setRandomRecipe] = useState(null);
 
   useEffect(() => {
-    if (!heroes.length) {
-      console.error("No heroes found");
-      return;
+    if (recipes && recipes.length > 0) {
+      setRandomRecipe(chooseRandomRecipe(recipes));
+    } else {
+      console.error("No recipes found");
     }
-    setHero(chooseRandomHero());
-  }, [heroes, chooseRandomHero]);
+  }, [recipes]);
 
-  if (!hero) return <div>Loading...</div>;
-
-  const bg = heroes.find((h) => h.name === hero).url;
-  const title = heroes.find((h) => h.name === hero).title;
-  const sub = heroes.find((h) => h.name === hero).sub;
+  if (!randomRecipe) return <div>Loading...</div>;
 
   return (
     <section className="hero-container">
       <picture>
-        <source media="(max-width: 767px)" srcSet={bg} type="image/jpeg" />
-        <source media="(min-width: 768px)" srcSet={bg} type="image/jpeg" />
-        <img src={bg} alt="Your image description" loading="lazy" />
+        <source media="(max-width: 767px)" srcSet={randomRecipe?.strMealThumb} type="image/jpeg" />
+        <source media="(min-width: 768px)" srcSet={randomRecipe?.strMealThumb} type="image/jpeg" />
+        <img src={randomRecipe?.strMealThumb} alt={randomRecipe?.strMeal} loading="lazy" />
       </picture>
-            <div className="px-4 py-5 my-5 text-center hero-content">
-                <h1 className="display-5 fw-bold">{title}</h1>
-                <div className="col-lg-6 mx-auto">
-                    <p className="lead mb-4">{sub}.</p>
-                    <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                        <button type="button" className="btn btn-primary btn-lg px-4 gap-3">See Recipe</button>
-                    </div>
-                </div>
-            </div>
+      <div className="px-4 py-5 my-5 text-center hero-content">
+        <h1 className="display-5 fw-bold">{randomRecipe?.strMeal}</h1>
+        <div className="col-lg-6 mx-auto">
+          <p className="lead mb-4">{randomRecipe?.strTags}.</p>
+          <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
-        </section>
-  )
-}
-
-export default Hero
+export default Hero;

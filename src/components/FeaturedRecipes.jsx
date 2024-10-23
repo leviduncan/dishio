@@ -7,7 +7,7 @@ const FeaturedRecipes = () => {
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h2 className="fw-light">Album example</h2>
+            <h2 className="fw-light">Featured Recipes</h2>
           </div>
         </div>
         <div className="album py-5 bg-light">

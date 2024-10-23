@@ -2,12 +2,25 @@ h1, h2, h3, h4, h5, .hero-container p {
   text-transform: capitalize;
 }
 
+h3, h4, h5, h6 {
+  font-family: Arial;
+}
+
+.top-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
 .hero-container {
   position: relative;
   width: 100%;
-  height: 100vh; /* Adjust height as needed */
+  height: 60vh; /* Adjust height as needed */
   background-size: cover;
   background-position: center;
+  margin-top: 100px;
 }
 
 .hero-container picture {
@@ -21,7 +34,7 @@ h1, h2, h3, h4, h5, .hero-container p {
 .hero-container picture::before {
   position: absolute;
   content: "";
-  height: 100vh;
+  height: 60vh;
   width: 100%;
   background-color: #14080056;
 }
@@ -41,3 +54,17 @@ h1, h2, h3, h4, h5, .hero-container p {
   text-align: center;
 }
 
+.search-bar {
+  background: var(--white);
+  border-bottom: solid 1px #cccccc86;
+}
+
+.search-bar .search input {
+  max-width: 450px;
+  width: 100%;
+  border-radius: 50px;
+  background: #fff;
+}
+.search-bar .search button {
+  background: var(--white);
+}

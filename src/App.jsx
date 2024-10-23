@@ -1,12 +1,13 @@
 import './App.css'
 import Home from './components/Home'
+import { RecipeProvider } from './context/recipeContext';
 
-function App() {
+const App = () => {
 
   return (
-    <>
-<Home />
-    </>
+    <RecipeProvider>
+      <Home />
+    </RecipeProvider>
   )
 }
 
