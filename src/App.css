@@ -56,7 +56,6 @@ h3, h4, h5, h6 {
 
 .search-bar {
   background: var(--white);
-  border-bottom: solid 1px #cccccc86;
 }
 
 .search-bar .search input {

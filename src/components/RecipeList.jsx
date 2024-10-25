@@ -5,14 +5,16 @@ const RecipeList = () => {
     const { recipes } = useContext(RecipeContext);
     return (
         <div className="container">
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-2 row-cols-lg-3 g-2">
                 {recipes.map((recipe) => (
-                    <div className="card" key={recipe.idMeal}>
-                        <img src={recipe.strMealThumb} className="card-img-top" alt={recipe.strMeal}/>
+                    <div className="col pb-4" key={recipe.idMeal}>
+                        <div className="card">
+                            <img src={recipe.strMealThumb} className="card-img-top" alt={recipe.strMeal} />
                             <div className="card-body">
                                 <h5 className="card-title">{recipe.strMeal}</h5>
                                 <p className="card-text">{recipe.strCategory} | {recipe.strArea}</p>
                             </div>
+                        </div>
                     </div>
                 ))}
             </div>
