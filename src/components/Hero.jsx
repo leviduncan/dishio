@@ -1,40 +1,38 @@
-import React, { useContext, useState, useEffect } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { RecipeContext } from '../context/recipeContext';
+import Loading from './Loading'
+import SearchBar from './SearchBar';
+import heroes from '../data/bgdata'
 
-const chooseRandomRecipe = (recipes) => {
-  const randomIndex = Math.floor(Math.random() * recipes.length);
-  return recipes[randomIndex];
+const chooseRandomHero = (heroes) => {
+  const randomIndex = Math.floor(Math.random() * heroes.length);
+  return heroes[randomIndex];
 };
 
 const Hero = () => {
-  const { searchQuery, handleSearch, recipes } = useContext(RecipeContext);
-  const [randomRecipe, setRandomRecipe] = useState(null);
+  const { searchQuery, handleSearch } = useContext(RecipeContext);
+  const [randomHero, setRandomHero] = useState(null);
 
   useEffect(() => {
-    if (recipes && recipes.length > 0) {
-      setRandomRecipe(chooseRandomRecipe(recipes));
+    if (heroes && heroes.length > 0) {
+      setRandomHero(chooseRandomHero(heroes));
     } else {
-      console.error("No recipes found");
+      console.error("No heroes found");
     }
-  }, [recipes]);
+  }, []);
 
-  if (!randomRecipe) return <div>Loading...</div>;
+  if (!randomHero) return <Loading />;
 
   return (
     <section className="hero-container">
       <picture>
-        <source media="(max-width: 767px)" srcSet={randomRecipe?.strMealThumb} type="image/jpeg" />
-        <source media="(min-width: 768px)" srcSet={randomRecipe?.strMealThumb} type="image/jpeg" />
-        <img src={randomRecipe?.strMealThumb} alt={randomRecipe?.strMeal} loading="lazy" />
+        <source media="(max-width: 767px)" srcSet={randomHero.url} type="image/jpeg" />
+        <source media="(min-width: 768px)" srcSet={randomHero.url} type="image/jpeg" />
+        <img src={randomHero.url} alt={randomHero.name} loading="lazy" />
       </picture>
-      <div className="px-4 py-5 my-5 text-center hero-content">
-        <h1 className="display-5 fw-bold">{randomRecipe?.strMeal}</h1>
-        <div className="col-lg-6 mx-auto">
-          <p className="lead mb-4">{randomRecipe?.strTags}.</p>
-          <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            
-          </div>
-        </div>
+
+      <div className="hero-content">
+          <SearchBar  handleSearch={handleSearch} searchQuery={searchQuery}  />
       </div>
     </section>
   );

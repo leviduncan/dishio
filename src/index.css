@@ -9,7 +9,7 @@
   --green: #28a745;
   --teal: #20c997;
   --cyan: #17a2b8;
-  --white: #fffbf2;
+  --white: #ffffff;
   --gray: #6c757d;
   --gray-dark: #343a40;
   --primary: #F27567;
@@ -50,7 +50,7 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fffbf2; }
+  background-color: #ffffff; }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important; }
@@ -3316,7 +3316,7 @@ input[type="button"].btn-block {
   background-color: #fffbf2;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem; }
+  border-radius: 0rem; }
   .card > hr {
     margin-right: 0;
     margin-left: 0; }
@@ -3335,7 +3335,8 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
-  padding: 1.25rem; }
+  padding: 1.25rem; 
+  background-color: #fff;}
 
 .card-title {
   margin-bottom: 0.75rem; }
@@ -3396,13 +3397,13 @@ input[type="button"].btn-block {
 
 .card-img,
 .card-img-top {
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px); }
+  border-top-left-radius: 0;
+  border-top-right-radius: 0; }
 
 .card-img,
 .card-img-bottom {
-  border-bottom-right-radius: calc(0.25rem - 1px);
-  border-bottom-left-radius: calc(0.25rem - 1px); }
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0; }
 
 .card-deck .card {
   margin-bottom: 15px; }
