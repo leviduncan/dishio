@@ -14,9 +14,9 @@ const Categories = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             if (!isHovered) {
-                setScrollPosition((prevPosition) => prevPosition + 100); // Adjust scroll speed
+                setScrollPosition((prevPosition) => prevPosition + 100); 
             }
-        }, 2000); // Adjust interval time (1 second)
+        }, 3000);
 
         return () => clearInterval(intervalId);
     }, [isHovered]);

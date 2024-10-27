@@ -100,8 +100,12 @@ h3, h4, h5, h6, .hero-content h1 {
 
 .card-img-grp {
   position: relative;
-  overlay: hidden;
+  overflow: hidden;
 }
+.card:hover .card-img-top {
+  scale: 1.1;
+}
+
 
 .gradient-overlay {
   position: absolute;
@@ -110,6 +114,7 @@ h3, h4, h5, h6, .hero-content h1 {
   width: 100%;
   height: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.644), rgba(0, 0, 0, 0));
+  z-index: 2;
 }
 
 .card-img-top {
@@ -125,6 +130,7 @@ h3, h4, h5, h6, .hero-content h1 {
   color: #fff;
   padding: 20px;
   z-index: 2;
+  z-index: 3;
 }
 
 .carousel-overlay.container {
@@ -188,6 +194,7 @@ h3, h4, h5, h6, .hero-content h1 {
 
 .category-item:hover p {
   font-weight: 700;
+  color: var(--primary);
 }
 
 .category-carousel {
