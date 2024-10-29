@@ -25,15 +25,12 @@ const Hero = () => {
 
   return (
     <section className="hero-container">
-      <picture>
-        <source media="(max-width: 767px)" srcSet={randomHero.url} type="image/jpeg" />
-        <source media="(min-width: 768px)" srcSet={randomHero.url} type="image/jpeg" />
-        <img src={randomHero.url} alt={randomHero.name} loading="lazy" />
-      </picture>
-
-      <div className="hero-content">
-          <SearchBar  handleSearch={handleSearch} searchQuery={searchQuery}  />
+      <div className="picture-overlay">
       </div>
+        <img src={randomHero.url} alt={randomHero.name} loading="lazy" />
+        <div className="hero-content">
+          <SearchBar handleSearch={handleSearch} searchQuery={searchQuery} />
+        </div>
     </section>
   );
 };
