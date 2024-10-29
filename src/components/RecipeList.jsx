@@ -8,7 +8,7 @@ const RecipeList = () => {
     if (!recipes) {
         return <div className="recipe-results">
             <div className="container text-center">
-                <h4>No items found for this category!</h4>
+                <h4>Sorry! No items found for this category!</h4>
             </div>
         </div>;
     }
