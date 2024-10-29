@@ -7,6 +7,28 @@ const RecipeProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('Chicken');
   const [recipes, setRecipes] = useState([]);
 
+  const getRecipeById = async (id) => {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    const recipe = data.meals[0];
+  
+    // Remove empty strings
+    Object.keys(recipe).forEach((key) => {
+      if (recipe[key] === '') {
+        delete recipe[key];
+      }
+    });
+  
+    return recipe;
+  }
+
+  // const getRecipeById = async (id) => {
+    
+  //   const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+  //   const data = await response.json();
+  //   return data.meals[0];
+  // }
+
   useEffect(() => {
     const fetchRecipes = async () => {
       if (searchQuery.trim() !== '') {
@@ -23,7 +45,7 @@ const RecipeProvider = ({ children }) => {
   };
 
   return (
-    <RecipeContext.Provider value={{ searchQuery, setSearchQuery, recipes, handleSearch }}>
+    <RecipeContext.Provider value={{ searchQuery, setSearchQuery, recipes, handleSearch, getRecipeById }}>
       {children}
     </RecipeContext.Provider>
   );
